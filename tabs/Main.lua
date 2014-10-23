@@ -25,10 +25,14 @@ function setup()
         for i in #totalData do
             if string.sub(totalData[i], 1, 9) == "saveFile_" then
                 --codea only
-                table.insert(saveData, readLocalData(totalData[i]))
+                table.insert(saveData, string.sub(readLocalData(totalData[i]), 10, -1))
             end
         end
         return saveData
+    end
+    
+    function logic.draw()
+        --called 60 times a second
     end
     
     --start hooks
@@ -39,6 +43,16 @@ function setup()
     end
     
     --start startup logic
+    
+    renderer.splashScreen()
+    
+    --resize all assets to the correct size
+    fullSizeAssets = {}
+    for i=1, #assets do
+        local originalAssetName, originalAsset = assets[i]()
+        --multiplier is subject to change
+        fullSizeAssets[originalAssetName] = resize.resize(originalAsset, 2)
+    end
     
     --codea only
     if not readLocalData("hasRanTutorial") then
@@ -55,5 +69,7 @@ end
 function draw()
     --codea only
     background(40, 40, 50)
+    logic.draw()
+    renderer.draw()
 end
 
