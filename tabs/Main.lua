@@ -1,4 +1,5 @@
 -- DefendersOfTheJewel
+displayMode(OVERLAY)
 
 -- Use this function to perform your initial setup
 function setup()
@@ -48,11 +49,13 @@ function setup()
     
     --resize all assets to the correct size
     fullSizeAssets = {}
-    for i=1, #assets do
-        local originalAssetName, originalAsset = assets[i]()
+    for k, v in pairs(assets) do
+        local originalAssetName, originalAsset = v()
         --multiplier is subject to change
-        fullSizeAssets[originalAssetName] = resize.resize(originalAsset, 2)
+        fullSizeAssets[originalAssetName] = resize.resize(originalAsset, 4)
     end
+    
+    renderer.stopSplashScreen()
     
     --codea only
     if not readLocalData("hasRanTutorial") then
@@ -68,7 +71,8 @@ end
 --codea only
 function draw()
     --codea only
-    background(40, 40, 50)
+    background(175, 41, 41, 255)
+    sprite(fullSizeAssets.testTurret, WIDTH/2, HEIGHT/2)
     logic.draw()
     renderer.draw()
 end

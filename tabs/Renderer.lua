@@ -8,9 +8,18 @@ function renderer.draw()
 end
 
 function renderer.runTutorial()
-    return true
+    return false
+    --return true
 end
 
 function renderer.splashScreen()
-    
+    setContext(imageBuffer)
+    background(46, 228, 230, 255)
+    fill(255, 255, 255, 255)
+    text("Loading...", WIDTH/2, HEIGHT/2)
+    setContext()
+end
+
+function renderer.stopSplashScreen()
+    imageBuffer = image(WIDTH, HEIGHT)
 end
