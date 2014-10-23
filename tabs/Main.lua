@@ -1,5 +1,6 @@
 -- DefendersOfTheJewel
 displayMode(OVERLAY)
+supportedOrientations(LANDSCAPE_ANY)
 
 -- Use this function to perform your initial setup
 function setup()
@@ -47,14 +48,6 @@ function setup()
     
     renderer.splashScreen()
     
-    --resize all assets to the correct size
-    fullSizeAssets = {}
-    for k, v in pairs(assets) do
-        local originalAssetName, originalAsset = v()
-        --multiplier is subject to change
-        fullSizeAssets[originalAssetName] = resize.resize(originalAsset, 4)
-    end
-    
     renderer.stopSplashScreen()
     
     --codea only
@@ -71,8 +64,7 @@ end
 --codea only
 function draw()
     --codea only
-    background(175, 41, 41, 255)
-    sprite(fullSizeAssets.testTurret, WIDTH/2, HEIGHT/2)
+    background(255, 255, 255, 255)
     logic.draw()
     renderer.draw()
 end

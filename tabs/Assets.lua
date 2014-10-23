@@ -1,4 +1,6 @@
 assets = {}
+fullSizeAssets = {}
+
 function assets.testTurret()
     local img = image(16, 16)
     img:set(2,9,127,127,127,255)
