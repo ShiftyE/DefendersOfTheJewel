@@ -2,7 +2,8 @@
 
 -- Use this function to perform your initial setup
 function setup()
-    print("Hey Angus")
+    print("Hello World!")
+    
 end
 
 -- This function gets called once every frame
