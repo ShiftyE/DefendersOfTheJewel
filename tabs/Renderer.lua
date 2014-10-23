@@ -1,3 +1,3 @@
-function newTower()
+function renderer.tutorial()
     
 end
