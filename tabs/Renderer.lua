@@ -1,8 +1,9 @@
 renderer = {}
 renderer.imageBuffers = {}
+renderer.towers = {}
 
 --resize all assets to the correct size
-for k, v in pairs(assets) do
+for k,v in pairs(assets) do
     local originalAssetName, originalAsset = v()
     --multiplier is subject to change
     --codea only
@@ -11,9 +12,12 @@ end
 
 --code to test the buffer system
 renderer.currentBuffer = "test"
-renderer.imageBuffers.test = image(WIDTH, HEIGHT)
-setContext(renderer.imageBuffers.test)
-sprite(fullSizeAssets.testTurret, WIDTH/2, HEIGHT/2)
+renderer.imageBuffers.towers = image(WIDTH, HEIGHT)
+setContext(renderer.imageBuffers.towers)
+for i,v in pairs(Towers) do
+    --Draws Towers
+    sprite(v.type.model,v.type.x,v.type.y)
+end
 setContext()
 
 function renderer.draw()
@@ -38,4 +42,13 @@ end
 
 function renderer.stopSplashScreen()
     renderer.currentBuffer = "test"
+end
+
+function renderer.touched(touch)
+    if CurrentTouch.state == BEGAN or CurrentTouch.state == MOVING then
+        touchVec =vec2(touch.x,touch.y)
+        renderer.addTower()
+        elseif CurrentTouch.state == ENDED then
+        touchVec = nil
+    end
 end

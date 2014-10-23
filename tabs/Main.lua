@@ -33,10 +33,6 @@ function setup()
         return saveData
     end
     
-    function logic.loadMap(mapName)
-        
-    end
-    
     function logic.draw()
         --called 60 times a second
     end
@@ -46,10 +42,6 @@ function setup()
     function logic.startGame()
         --takes the player to the game board
         logic.isInGame = true
-    end
-    
-    function logic.placeDefence(gridX, gridY, defenceOrientation)
-        --places a defence at gridX and gridY with defenceOrientation
     end
     
     --start startup logic
@@ -77,6 +69,3 @@ function draw()
     renderer.draw()
 end
 
-function touched(touch)
-    renderer.touched(touch)
-end
